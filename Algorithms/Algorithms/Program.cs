@@ -1,50 +1,60 @@
 ﻿using Algorithms.Helpers;
 using Algorithms.SortingAlgorithms;
+using Algorithms.SortingAlgorithms.Interfaces;
 using System;
-using System.Diagnostics;
-using System.Linq;
 
 namespace Algorithms
 {
     internal class Program
     {
-        private static IRandomArray _array = new RandomFilledArray(65000);
+        private static IRandomArray _array = new RandomFilledArray(10);
 
         private static void Main(string[] args)
         {
             BubbleSortTest();
+            InsertionSortTest();
         }
 
         private static void BubbleSortTest()
         {
-            Stopwatch timer = new Stopwatch();
+            Console.WriteLine("Bubble Sort Test:");
 
             int[] arr = _array.GetRandomIntegerArray();
 
-            IBubbleSort bubbleSort = new BubbleSort();
+            ISortAble bubbleSort = new BubbleSort();
 
-            timer.Start();
+            bubbleSort.StartTimer();
 
             int[] sorted = bubbleSort.Sort(arr);
 
-            timer.Stop();
+            bubbleSort.StopTimer();
 
-            Console.WriteLine("Bubble Sort:");
+            bubbleSort.PrintArray(sorted);
 
-            //sorted.ToList().ForEach(n => Console.Write($"{n},"));
-            Console.WriteLine($"Time Elapsed: {timer.ElapsedMilliseconds} ms");
+            bubbleSort.PrintElapsedTime();
 
-            timer.Reset();
+            bubbleSort.ResetTimer();
+        }
 
-            //pass sorted array to alogrithm, expecting shorter time to process.
-            timer.Start();
-            bubbleSort.Sort(arr);
-            timer.Stop();
+        private static void InsertionSortTest()
+        {
+            Console.WriteLine("Insertion Sort Test:");
 
-            Console.WriteLine("Bubble Sort(pre-sorted):");
-            //sorted.ToList().ForEach(n => Console.Write($"{n},"));
-            Console.WriteLine($"Time Elapsed: {timer.ElapsedMilliseconds} ms");
-            timer.Reset();
+            int[] arr = _array.GetRandomIntegerArray();
+
+            ISortAble insertionSort = new InsertionSort();
+
+            insertionSort.StartTimer();
+
+            int[] sorted = insertionSort.Sort(arr);
+
+            insertionSort.StopTimer();
+
+            insertionSort.PrintArray(sorted);
+
+            insertionSort.PrintElapsedTime();
+
+            insertionSort.ResetTimer();
         }
     }
 }

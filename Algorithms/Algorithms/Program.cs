@@ -53,9 +53,12 @@ namespace Algorithms
                 LinearSearchTest(arr, valueToFind);
 
                 BinarySearchTest(arr, valueToFind);
+
                 Console.WriteLine();
             }
         }
+
+        #region Search Algorithm Tests
 
         private static void BinarySearchTest(int[] arr, int valueToFind)
         {
@@ -82,8 +85,6 @@ namespace Algorithms
 
             binarySearch.ResetTimer();
         }
-
-        #region Search Algorithm Tests
 
         private static void LinearSearchTest(int[] arr, int valueToFind)
         {

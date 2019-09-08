@@ -8,7 +8,9 @@ namespace Algorithms
 {
     internal class Program
     {
-        private static IRandomArray _array = new RandomFilledArray(1000000);
+        private const int ARRAY_SIZE = 1000000;
+
+        private static IRandomArray _array = new RandomFilledArray(ARRAY_SIZE);
 
         private static int[] _arr = _array.GetRandomIntegerArray();
 

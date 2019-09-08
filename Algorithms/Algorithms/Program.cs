@@ -1,4 +1,5 @@
 ﻿using Algorithms.Helpers;
+using Algorithms.SortingAlgorithms.Algorithms;
 using Algorithms.SortingAlgorithms;
 using Algorithms.SortingAlgorithms.Interfaces;
 using System;
@@ -7,7 +8,7 @@ namespace Algorithms
 {
     internal class Program
     {
-        private static IRandomArray _array = new RandomFilledArray(100000);
+        private static IRandomArray _array = new RandomFilledArray(10000);
 
         private static bool _printArray = false;
 
@@ -17,6 +18,31 @@ namespace Algorithms
             InsertionSortTest();
             SelectionSortTest();
             QuickSortTest();
+            MergeSortTest();
+        }
+
+        private static void MergeSortTest()
+        {
+            int[] arr = _array.GetRandomIntegerArray();
+
+            Console.WriteLine("Merge Sort Test");
+
+            ISortAble mergeSort = new MergeSort();
+
+            mergeSort.StartTimer();
+
+            int[] sorted = mergeSort.Sort(arr);
+
+            mergeSort.StopTimer();
+
+            if (_printArray)
+            {
+                mergeSort.PrintArray(arr);
+            }
+
+            mergeSort.PrintElapsedTime();
+
+            mergeSort.ResetTimer();
         }
 
         private static void QuickSortTest()

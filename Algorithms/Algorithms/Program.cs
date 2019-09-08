@@ -1,4 +1,6 @@
 ﻿using Algorithms.Helpers;
+using Algorithms.SearchingAlgorithms.Algorithms;
+using Algorithms.SearchingAlgorithms.BaseClasses;
 using Algorithms.SortingAlgorithms;
 using Algorithms.SortingAlgorithms.Algorithms;
 using Algorithms.SortingAlgorithms.Interfaces;
@@ -10,21 +12,77 @@ namespace Algorithms
     {
         private const int ARRAY_SIZE = 1000000;
 
-        private static IRandomArray _array = new RandomFilledArray(ARRAY_SIZE);
+        private static readonly IRandomArray _array = new RandomFilledArray(ARRAY_SIZE);
 
-        private static int[] _arr = _array.GetRandomIntegerArray();
+        private static readonly int[] _arr = _array.GetRandomIntegerArray();
 
-        private static bool _printArray = false;
+        private static readonly bool _printArray = false;
 
         private static void Main(string[] args)
         {
-            DotNetArraySortTest(); //Added as a baseline test and to show why you don't write your own sort methods
+            StartSortingTest();
+            StartSearchingTest();
+        }
+
+        private static void StartSortingTest()
+        {
+            //DotNetArraySortTest(); //Added as a baseline test and to show why you don't write your own sort methods
             //BubbleSortTest();
             //InsertionSortTest();
             //SelectionSortTest();
-            QuickSortTest();
-            MergeSortTest();
+            //QuickSortTest();
+            //MergeSortTest();
         }
+
+        private static void StartSearchingTest()
+        {
+            LinearSearchTest();
+        }
+
+        #region Search Algorithm Tests
+
+        private static void LinearSearchTest()
+        {
+            bool found = false;
+
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
+
+            //replace a randomly selected value in the array
+            Random rand = new Random();
+
+            int i = rand.Next(arr.Length);
+
+            int valueToFind = 12345;
+
+            arr[i] = valueToFind;
+
+            Console.WriteLine("Linear Search Test");
+
+            ISearchable linearSearch = new LinearSearch();
+
+            linearSearch.StartTimer();
+
+            found = linearSearch.Search(arr, valueToFind);
+
+            linearSearch.StopTimer();
+
+            Console.WriteLine($"Found element: {found} ");
+
+            if (_printArray)
+            {
+                linearSearch.PrintArray(arr);
+            }
+
+            linearSearch.PrintElapsedTime();
+
+            linearSearch.ResetTimer();
+        }
+
+        #endregion Search Algorithm Tests
+
+        #region Sorting Algorithm Tests
 
         private static void DotNetArraySortTest()
         {
@@ -181,5 +239,7 @@ namespace Algorithms
 
             insertionSort.ResetTimer();
         }
+
+        #endregion Sorting Algorithm Tests
     }
 }

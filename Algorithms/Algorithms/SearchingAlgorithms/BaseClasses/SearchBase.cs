@@ -1,18 +1,17 @@
 ﻿using Algorithms.Helpers;
-using Algorithms.SortingAlgorithms.Interfaces;
 using System;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Algorithms.SortingAlgorithms
+namespace Algorithms.SearchingAlgorithms.BaseClasses
 {
-    public abstract class SortBase : ISortAble
+    public abstract class SearchBase : ISearchable
     {
         private Stopwatch _stopWatch = new Stopwatch();
 
-        public int[] IntArr { get; set; }
+        public int[] intArr { get; set; }
 
-        public abstract int[] Sort(int[] arr);
+        public abstract bool Search(int[] arr, int elementToFind);
 
         public void PrintArray(int[] arr)
 

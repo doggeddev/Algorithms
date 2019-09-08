@@ -1,6 +1,6 @@
 ﻿using Algorithms.Helpers;
-using Algorithms.SortingAlgorithms.Algorithms;
 using Algorithms.SortingAlgorithms;
+using Algorithms.SortingAlgorithms.Algorithms;
 using Algorithms.SortingAlgorithms.Interfaces;
 using System;
 
@@ -8,22 +8,53 @@ namespace Algorithms
 {
     internal class Program
     {
-        private static IRandomArray _array = new RandomFilledArray(10000);
+        private static IRandomArray _array = new RandomFilledArray(1000000);
+
+        private static int[] _arr = _array.GetRandomIntegerArray();
 
         private static bool _printArray = false;
 
         private static void Main(string[] args)
         {
-            BubbleSortTest();
-            InsertionSortTest();
-            SelectionSortTest();
+            DotNetArraySortTest(); //Added as a baseline test and to show why you don't write your own sort methods
+            //BubbleSortTest();
+            //InsertionSortTest();
+            //SelectionSortTest();
             QuickSortTest();
             MergeSortTest();
         }
 
+        private static void DotNetArraySortTest()
+        {
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
+
+            Console.WriteLine("Array.Sort() Test");
+
+            ISortAble dotNetArraySort = new DotNetSort();
+
+            dotNetArraySort.StartTimer();
+
+            int[] sorted = dotNetArraySort.Sort(arr);
+
+            dotNetArraySort.StopTimer();
+
+            if (_printArray)
+            {
+                dotNetArraySort.PrintArray(arr);
+            }
+
+            dotNetArraySort.PrintElapsedTime();
+
+            dotNetArraySort.ResetTimer();
+        }
+
         private static void MergeSortTest()
         {
-            int[] arr = _array.GetRandomIntegerArray();
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
 
             Console.WriteLine("Merge Sort Test");
 
@@ -49,7 +80,9 @@ namespace Algorithms
         {
             Console.WriteLine("Quick Sort Test");
 
-            int[] arr = _array.GetRandomIntegerArray();
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
 
             ISortAble quickSort = new QuickSort();
 
@@ -73,7 +106,9 @@ namespace Algorithms
         {
             Console.WriteLine("Selection Sort Test");
 
-            int[] arr = _array.GetRandomIntegerArray();
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
 
             ISortAble selectionSort = new SelectionSort();
 
@@ -97,7 +132,9 @@ namespace Algorithms
         {
             Console.WriteLine("Bubble Sort Test:");
 
-            int[] arr = _array.GetRandomIntegerArray();
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
 
             ISortAble bubbleSort = new BubbleSort();
 
@@ -121,7 +158,9 @@ namespace Algorithms
         {
             Console.WriteLine("Insertion Sort Test:");
 
-            int[] arr = _array.GetRandomIntegerArray();
+            int[] arr = new int[_arr.Length];
+
+            Array.Copy(_arr, arr, _arr.Length);
 
             ISortAble insertionSort = new InsertionSort();
 

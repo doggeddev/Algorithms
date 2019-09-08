@@ -11,8 +11,8 @@ namespace Algorithms.Helpers
     {
         private Random _random = new Random();
         private int _arrayLength = -1;
-        private int _minValue = -65534;
-        private int _maxValue = 65535;
+        private int _minValue = 0;
+        private int _maxValue = int.MaxValue;
 
         public RandomFilledArray(int arrayLength)
         {

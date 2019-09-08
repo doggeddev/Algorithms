@@ -10,7 +10,7 @@ namespace Algorithms
 {
     internal class Program
     {
-        private const int ARRAY_SIZE = 1000000;
+        private const int ARRAY_SIZE = 10000000;
 
         private static readonly IRandomArray _array = new RandomFilledArray(ARRAY_SIZE);
 
@@ -36,27 +36,58 @@ namespace Algorithms
 
         private static void StartSearchingTest()
         {
-            LinearSearchTest();
+            Random rand = new Random();
+
+            int[] arr = new int[ARRAY_SIZE];
+
+            Array.Copy(_arr, arr, _arr.Length - 1);
+
+            Array.Sort(arr);
+
+            for (int i = 0; i < 10; i++)
+            {
+                int valueToFind = _arr[rand.Next(ARRAY_SIZE)];
+
+                Console.WriteLine($"Test #{i + 1}:");
+
+                LinearSearchTest(arr, valueToFind);
+
+                BinarySearchTest(arr, valueToFind);
+                Console.WriteLine();
+            }
+        }
+
+        private static void BinarySearchTest(int[] arr, int valueToFind)
+        {
+            bool found = false;
+
+            Console.WriteLine("Binary Search Test");
+
+            ISearchable binarySearch = new BinarySearch();
+
+            binarySearch.StartTimer();
+
+            found = binarySearch.Search(arr, valueToFind);
+
+            binarySearch.StopTimer();
+
+            //Console.WriteLine($"Found value {valueToFind} : {found} ");
+
+            if (_printArray)
+            {
+                binarySearch.PrintArray(arr);
+            }
+
+            binarySearch.PrintElapsedTime();
+
+            binarySearch.ResetTimer();
         }
 
         #region Search Algorithm Tests
 
-        private static void LinearSearchTest()
+        private static void LinearSearchTest(int[] arr, int valueToFind)
         {
             bool found = false;
-
-            int[] arr = new int[_arr.Length];
-
-            Array.Copy(_arr, arr, _arr.Length);
-
-            //replace a randomly selected value in the array
-            Random rand = new Random();
-
-            int i = rand.Next(arr.Length);
-
-            int valueToFind = 12345;
-
-            arr[i] = valueToFind;
 
             Console.WriteLine("Linear Search Test");
 
@@ -68,7 +99,7 @@ namespace Algorithms
 
             linearSearch.StopTimer();
 
-            Console.WriteLine($"Found element: {found} ");
+            //Console.WriteLine($"Found value {valueToFind} : {found} ");
 
             if (_printArray)
             {

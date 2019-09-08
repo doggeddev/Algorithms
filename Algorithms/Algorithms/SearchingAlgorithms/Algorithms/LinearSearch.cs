@@ -1,4 +1,5 @@
 ﻿using Algorithms.SearchingAlgorithms.BaseClasses;
+using System;
 
 namespace Algorithms.SearchingAlgorithms.Algorithms
 {

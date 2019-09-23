@@ -1,9 +1,8 @@
 ﻿using Algorithms.SearchingAlgorithms.BaseClasses;
-using System;
 
 namespace Algorithms.SearchingAlgorithms.Algorithms
 {
-    internal class LinearSearch : SearchBase
+    public class LinearSearch : SearchBase
     {
         public override bool Search(int[] arr, int elementToFind)
         {

@@ -2,7 +2,7 @@
 
 namespace Algorithms.SearchingAlgorithms.Algorithms
 {
-    internal class BinarySearch : SearchBase
+    public class BinarySearch : SearchBase
     {
         //assumes a sorted array is passed in
         public override bool Search(int[] arr, int elementToFind)

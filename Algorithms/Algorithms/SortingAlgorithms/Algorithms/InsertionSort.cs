@@ -1,6 +1,6 @@
 ﻿namespace Algorithms.SortingAlgorithms
 {
-    internal class InsertionSort : SortBase
+    public class InsertionSort : SortBase
     {
         public override int[] Sort(int[] arr)
         {

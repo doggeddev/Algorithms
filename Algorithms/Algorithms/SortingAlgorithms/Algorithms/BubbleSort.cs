@@ -1,6 +1,6 @@
 ﻿namespace Algorithms.SortingAlgorithms
 {
-    internal class BubbleSort : SortBase
+    public class BubbleSort : SortBase
     {
         public override int[] Sort(int[] arr)
         {

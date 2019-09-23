@@ -1,6 +1,6 @@
 ﻿namespace Algorithms.SortingAlgorithms
 {
-    internal class QuickSort : SortBase
+    public class QuickSort : SortBase
     {
         public override int[] Sort(int[] arr)
         {

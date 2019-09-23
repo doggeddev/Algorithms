@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Algorithms",
+    "\\Algorithms\\Algorithms",
+    "\\Algorithms\\Algorithms\\Helpers",
+    "\\Algorithms\\Algorithms\\SearchingAlgorithms",
+    "\\Algorithms\\Algorithms\\SearchingAlgorithms\\BaseClasses",
+    "\\Algorithms\\Algorithms\\SearchingAlgorithms\\Interfaces",
+    "\\Algorithms\\Algorithms\\SortingAlgorithms",
+    "\\Algorithms\\Algorithms\\SortingAlgorithms\\Algorithms",
+    "\\Algorithms\\Algorithms\\SortingAlgorithms\\BaseClasses"
+  ],
+  "SelectedNode": "\\Algorithms\\AlgorithmsUnitTests\\SearchAlgorithmTests.cs",
+  "PreviewInSolutionExplorer": false
+}

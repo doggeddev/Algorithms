@@ -20,8 +20,8 @@ namespace Algorithms
 
         private static void Main(string[] args)
         {
-            StartSortingTest();
-            StartSearchingTest();
+            //StartSortingTest();
+            //StartSearchingTest();
         }
 
         private static void StartSortingTest()
